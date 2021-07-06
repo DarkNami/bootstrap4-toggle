@@ -57,13 +57,17 @@
 			: this.options.size === 'mini' || this.options.size === 'xs' ? 'btn-xs'
 			: '';
 
-		const $toggleOn = $('<label for="' + this.$element.prop('id') + '" class="btn">')
+		const $toggleOn = $('<label class="btn">')
 			.html(this.options.on)
 			.addClass(this._onstyle + ' ' + size);
 
-		const $toggleOff = $('<label for="' + this.$element.prop('id') + '" class="btn">')
+		if (this.$element.prop('id')) $toggleOn.prop('for', this.$element.prop('id'));
+
+		const $toggleOff = $('<label class="btn">')
 			.html(this.options.off)
 			.addClass(this._offstyle + ' ' + size);
+
+		if (this.$element.prop('id')) $toggleOff.prop('for', this.$element.prop('id'));
 
 		const $toggleHandle = $('<span class="toggle-handle btn btn-light">')
 			.addClass(size);
